@@ -1,3 +1,5 @@
+3rd year project
+
 # Description
 
 The Whanos project allow you to automatically deploy (nearly) any application into a cluster, just by pushing into your GIT repository.
