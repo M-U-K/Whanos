@@ -1,0 +1,17 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# whalos-c
+#
+
+FROM gcc:11.2
+ONBUILD SHELL ["/bin/bash", "-c"]
+ONBUILD WORKDIR /app/
+
+ONBUILD COPY . .
+
+ONBUILD RUN make fclean
+ONBUILD RUN make
+
+ONBUILD CMD ["./compiled-app"]

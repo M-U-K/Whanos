@@ -1,0 +1,18 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# Dockerfile.base
+#
+
+FROM python:3.10-alpine
+ONBUILD RUN apk add --no-cache bash
+
+ONBUILD SHELL ["/bin/bash", "-c"]
+ONBUILD WORKDIR /app/
+
+ONBUILD COPY . .
+
+ONBUILD RUN pip install -r requirements.txt
+
+ONBUILD CMD [ "python", "-m", "app" ]

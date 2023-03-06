@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+  whanos-jenkins:
+    image: whanos-jenkins-base
+    container_name: whanos-jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # - jenkins_home:/var/jenkins_home
+      # - ./whanos-jenkins.yml:/var/jenkins_home/whanos-jenkins.yml
+      # - ./job_dsl.groovy:/job_dsl.groovy
+
+volumes:
+  jenkins_home:

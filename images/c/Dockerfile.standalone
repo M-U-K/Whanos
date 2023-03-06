@@ -1,0 +1,17 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# whalos-c-standalone
+#
+
+FROM gcc:11.2
+SHELL [ "/bin/bash", "-c" ]
+WORKDIR /app/
+
+COPY . .
+
+RUN make fclean
+RUN make
+
+CMD [ "./compiled-app" ]

@@ -1,0 +1,23 @@
+jenkins:
+  systemMessage: "Welcome to the Whanos Jenkins Instance."
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          name: "admin"
+          password: "admin"
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Whanos administrator"
+            permissions:
+              - "Overall/Administer"
+            assignments:
+              - "admin"
+  remotingSecurity:
+    enabled: true
+jobs:
+  - file: ./job_dsl.groovy

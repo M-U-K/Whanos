@@ -1,0 +1,22 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# Dockerfile.base
+#
+
+FROM maven:3.8-openjdk-17-slim as builder
+
+ONBUILD SHELL ["/bin/bash", "-c"]
+
+WORKDIR /app/
+
+ONBUILD COPY . .
+
+ONBUILD RUN mvn dependency:resolve -f app/pom.xml
+
+ONBUILD RUN mvn package -f app/pom.xml
+
+ONBUILD RUN cp app/target/app.jar .
+
+ONBUILD CMD [ "java", "-jar", "app.jar" ]

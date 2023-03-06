@@ -1,0 +1,16 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# Dockerfile.base
+#
+
+FROM gcc:11.2
+ONBUILD SHELL ["/bin/bash", "-c"]
+ONBUILD WORKDIR /app/
+
+ONBUILD COPY . .
+
+ONBUILD RUN ./befunge-compile.sh
+
+ONBUILD CMD [ "./compiled-app" ]

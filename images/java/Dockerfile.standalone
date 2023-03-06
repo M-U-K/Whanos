@@ -1,0 +1,27 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# Dockerfile.standalone
+#
+
+## ==== BUILDER ====>
+FROM maven:3.8-openjdk-17-slim as builder
+SHELL ["/bin/bash", "-c"]
+WORKDIR /app/
+
+COPY . .
+
+RUN mvn dependency:resolve -f app/pom.xml
+RUN mvn package -f app/pom.xml
+RUN cp app/target/app.jar .
+
+
+## ==== RUNNER ====>
+FROM openjdk:17
+SHELL ["/bin/bash", "-c"]
+WORKDIR /app/
+
+COPY --from=builder /app/ .
+
+CMD [ "java", "-jar", "app.jar" ]

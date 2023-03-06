@@ -1,0 +1,18 @@
+#
+# EPITECH PROJECT, 2021
+# Epitech Years 3
+# File description:
+# Dockerfile.base
+#
+
+FROM node:14.17.5-alpine
+ONBUILD RUN apk add --no-cache bash
+
+ONBUILD SHELL ["/bin/bash", "-c"]
+ONBUILD WORKDIR /app/
+
+ONBUILD COPY . .
+
+ONBUILD RUN npm install
+
+ONBUILD CMD [ "node", "." ]
